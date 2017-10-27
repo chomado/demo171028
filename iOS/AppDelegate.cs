@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
+
 using Foundation;
 using UIKit;
 
@@ -15,7 +19,8 @@ namespace demo171028.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
-
+            MobileCenter.Start("38fd8461-e873-4e71-94e7-e17418ddc514",
+                   typeof(Analytics), typeof(Crashes));
 
             return base.FinishedLaunching(app, options);
         }
