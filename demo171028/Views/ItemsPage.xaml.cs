@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
 using Xamarin.Forms;
 
 namespace demo171028
@@ -31,6 +32,10 @@ namespace demo171028
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
+            Analytics.TrackEvent(
+                name: "追加ボタンをクリックした", 
+                properties: new Dictionary<string, string>{ {"Category", "Button_Clicked"} }
+            );
             await Navigation.PushAsync(new NewItemPage());
         }
 

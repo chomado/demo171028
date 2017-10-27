@@ -1,6 +1,8 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using Microsoft.Azure.Mobile.Analytics;
+using System.Collections.Generic;
 
 namespace demo171028
 {
@@ -23,6 +25,12 @@ namespace demo171028
 
         async void Save_Clicked(object sender, EventArgs e)
         {
+            Analytics.TrackEvent(
+                name: "新規アイテム追加", 
+                properties: new Dictionary<string, string> {
+                    { "name", $"{Item.Text}"}
+                }
+            );
             MessagingCenter.Send(this, "AddItem", Item);
             await Navigation.PopToRootAsync();
         }
